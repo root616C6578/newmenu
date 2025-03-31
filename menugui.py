@@ -279,7 +279,8 @@ while True:
                             #draw.rectangle((40, 30, 160, 50), outline="black", fill="black")
                             img = original_img.copy()
                             draw = ImageDraw.Draw(img)
-                            draw.text((5, 20), f"l2ping {selected_mac}", fill="white")
+                            draw.text((40, 20), f"attacking:", fill="white")
+                            draw.text((5, 20), f"{selected_mac}", fill="white")
                             draw.text((40, 30), f"at {i+1}", fill="white")
                             disp.display(img)
 
