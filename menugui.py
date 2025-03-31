@@ -84,7 +84,7 @@ while True:
         time.sleep(0.1)
 
         original_img = Image.open("imgmenu/menuimg.png").convert("RGB").resize((128, 128))
-    
+        original_img2 = Image.open("imgmenu/menuimg2.png").convert("RGB").resize((128, 128))
         if current_index == 1:
             img = original_img.copy() 
             draw = ImageDraw.Draw(img)
@@ -226,10 +226,16 @@ while True:
 
 
         if current_index == 2:
+            img = original_img.copy()
+            draw = ImageDraw.Draw(img)
+            font = ImageFont.load_default()
+
             mac_addresses = scan_bluetooth_devices()
             cursor = 0
             while True:
-                draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
+                #draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
+                img = original_img.copy()
+                draw = ImageDraw.Draw(img)
                 y = 20
                 for i, addr in enumerate(mac_addresses):
                     if i == cursor:
@@ -260,11 +266,15 @@ while True:
                         
                         
                     # Вивести статус на екран
-                    draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
+                    #draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
+                    img = original_img.copy()
+                    draw = ImageDraw.Draw(img)
                     draw.text((25, 20), f"l2ping {selected_mac}", fill="white")
                     for i in range(10):
                         subprocess.run(command)
-                        draw.rectangle((40, 30, 160, 50), outline="black", fill="black")
+                        #draw.rectangle((40, 30, 160, 50), outline="black", fill="black")
+                        img = original_img.copy()
+                        draw = ImageDraw.Draw(img)
                         draw.text((40, 30), f"at {i+1}", fill="white")
                         disp.display(img)
                      
@@ -281,14 +291,18 @@ while True:
             None
 
         if current_index == 4:
-            
-            command = ['sudo', 'python', '/home/alex/Sour-Apple/sourapple.py']
+            img = original_img2.copy()
+            draw = ImageDraw.Draw(img)
+            font = ImageFont.load_default()
+            command = ['sudo', 'python', 'Sour-Apple/sourapple.py'] #/home/alex/Sour-Apple
             subprocess.Popen(command)            
-            draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
+            #draw.rectangle((0, 0, 160, 128), outline="black", fill="black") 
             draw.text((40, 20), f"attacking:", fill="white")
             for i in range(120):
                 time.sleep(1)
-                draw.rectangle((40, 30, 160, 50), outline="black", fill="black")
+                #draw.rectangle((40, 30, 160, 50), outline="black", fill="black")
+                img = original_img2.copy()
+                draw = ImageDraw.Draw(img)
                 draw.text((40, 30), f"at {i+1}", fill="white")
                  
                 disp.display(img)          
