@@ -63,7 +63,9 @@ def scan_bluetooth_devices():
 
     return mac_addresses
 
-
+draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
+disp.display(img)
+time.sleep(0.1)
 
 while True:
     if GPIO.input(BUTTON_UP) == GPIO.LOW:
@@ -132,7 +134,7 @@ while True:
                         while True:
                             img = original_img.copy()
                             draw = ImageDraw.Draw(img)
-                            #draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
+                            # draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
                             draw.text((40, 50), f"freq: {f:.1f} MHz", font=font, fill="white")
                             disp.display(img)
 
@@ -174,9 +176,9 @@ while True:
                                 
                             for i, op in enumerate(wavfiles):
                                 if i == cursor_wav:
-                                    draw.text((29, y), f"> {op}", font=font, fill="white")  # Вибраний елемент
+                                    draw.text((25, y), f"> {op}", font=font, fill="white")  # Вибраний елемент
                                 else:
-                                    draw.text((29, y), f"  {op}", font=font, fill="white") 
+                                    draw.text((25, y), f"  {op}", font=font, fill="white") 
                                 y += 20
 
                             disp.display(img)    
@@ -203,8 +205,8 @@ while True:
                         img = original_img.copy()
                         draw = ImageDraw.Draw(img)
                         #draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
-                        draw.text((29,20), f"attack {fm}MHz",fill="white")
-                        draw.text((29,30), f"file: {selected_file}", fill='white')
+                        draw.text((25,20), f"attack {fm}MHz",fill="white")
+                        draw.text((25,30), f"file: {selected_file}", fill='white')
                         disp.display(img)
                         print(fm)
                         print(selected_file)
@@ -231,9 +233,9 @@ while True:
                 y = 20
                 for i, addr in enumerate(mac_addresses):
                     if i == cursor:
-                        draw.text((29, y), f"> {addr}", font=font, fill="white")
+                        draw.text((25, y), f"> {addr}", font=font, fill="white")
                     else:
-                        draw.text((29, y), f"  {addr}", font=font, fill="white")
+                        draw.text((25, y), f"  {addr}", font=font, fill="white")
                     y += 20
                 disp.display(img)
                 button_state_UP = GPIO.input(BUTTON_UP)
@@ -259,7 +261,7 @@ while True:
                         
                     # Вивести статус на екран
                     draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
-                    draw.text((29, 20), f"l2ping {selected_mac}", fill="white")
+                    draw.text((25, 20), f"l2ping {selected_mac}", fill="white")
                     for i in range(10):
                         subprocess.run(command)
                         draw.rectangle((40, 30, 160, 50), outline="black", fill="black")
