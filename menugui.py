@@ -81,8 +81,15 @@ while True:
             break
         time.sleep(0.1)
 
+        original_img = Image.open("imgmenu/menuimg.png").convert("RGB").resize((128, 128))
+    
         if current_index == 1:
-            draw.rectangle((0, 0, 160, 128), outline="black", fill="black")  # Очистити екран
+            img = original_img.copy() 
+            draw = ImageDraw.Draw(img)
+            font = ImageFont.load_default()
+
+            #draw.rectangle((0, 0, 160, 128), outline="black", fill="black")  # Очистити екран
+
             disp.display(img)
             cursor = 0
             f = 87.5
@@ -94,7 +101,9 @@ while True:
             wavfiles = files
             selected_file = ''
             while True:
-                draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
+                img = original_img.copy()
+                draw = ImageDraw.Draw(img)
+                #draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
                 y = 35 
                 for i, op in enumerate(fm_opt):
                     if i == cursor:
@@ -121,7 +130,9 @@ while True:
                 if button_state_SELECT == GPIO.LOW:
                     if fm_opt[cursor] == "select freq":
                         while True:
-                            draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
+                            img = original_img.copy()
+                            draw = ImageDraw.Draw(img)
+                            #draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
                             draw.text((40, 50), f"freq: {f:.1f} MHz", font=font, fill="white")
                             disp.display(img)
 
@@ -133,13 +144,13 @@ while True:
                                 f += 0.1
                                 f = round(f, 1)
                                 draw.text((40, 50), f"freq: {f:.1f} MHz", font=font, fill="white")
-                                time.sleep(0.0001)
+                                time.sleep(0.05)
                     
                             if button_state_JDOWN == GPIO.LOW and f > 87.5:
                                 f -= 0.1
                                 f = round(f, 1)
                                 draw.text((40, 50), f"freq: {f:.1f} MHz", font=font, fill="white")
-                                time.sleep(0.0001)                    
+                                time.sleep(0.05)                    
 
                             if button_state_JSELECT == GPIO.LOW:
                                 fm = round(f, 1)
@@ -152,8 +163,9 @@ while True:
                         visible_items = 5  
                         scroll_offset = 0
                         while True:
-                            
-                            draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
+                            img = original_img.copy()
+                            draw = ImageDraw.Draw(img)
+                            #draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
                             y = 20
                             if cursor_wav < scroll_offset:
                                 scroll_offset = cursor_wav
@@ -188,7 +200,9 @@ while True:
                                 break
                     time.sleep(0.1)
                     if fm_opt[cursor] == "start attack":
-                        draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
+                        img = original_img.copy()
+                        draw = ImageDraw.Draw(img)
+                        #draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
                         draw.text((29,20), f"attack {fm}MHz",fill="white")
                         draw.text((29,30), f"file: {selected_file}", fill='white')
                         disp.display(img)
