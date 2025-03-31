@@ -297,14 +297,12 @@ while True:
             command = ['sudo', 'python', 'Sour-Apple/sourapple.py'] #/home/alex/Sour-Apple
             subprocess.Popen(command)            
             #draw.rectangle((0, 0, 160, 128), outline="black", fill="black") 
-            img = original_img2.copy()
-            draw = ImageDraw.Draw(img)
-            draw.text((40, 20), f"attacking:", fill="white")
             for i in range(120):
                 time.sleep(1)
                 #draw.rectangle((40, 30, 160, 50), outline="black", fill="black")
                 img = original_img2.copy()
                 draw = ImageDraw.Draw(img)
+                draw.text((40, 20), f"attacking:", fill="white")
                 draw.text((40, 30), f"at {i+1}", fill="white")
                  
                 disp.display(img)          
