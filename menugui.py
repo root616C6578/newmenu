@@ -272,7 +272,7 @@ while True:
                     img = original_img.copy()
                     draw = ImageDraw.Draw(img)
                     draw.text((25, 20), f"l2ping {selected_mac}", fill="white")
-                    for i in range(10):
+                    for i in range(120):
                         subprocess.run(command)
                         #draw.rectangle((40, 30, 160, 50), outline="black", fill="black")
                         img = original_img.copy()
@@ -283,7 +283,7 @@ while True:
 
                     time.sleep(1)
                     draw_image()
-                    break
+                    
             time.sleep(0.1)
             draw_image()
 
