@@ -269,27 +269,21 @@ while True:
                         
                         command = ["timeout", "1", "sudo", "l2ping", "-s", "600", "-f", selected_mac]
                         print(f"l2ping {selected_mac}")               
-                        # subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True) 
-                        
-                            
-                            
-                            
                         # Вивести статус на екран
                         #draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
                         img = original_img.copy()
                         draw = ImageDraw.Draw(img)
-                        draw.text((25, 20), f"l2ping {selected_mac}", fill="white")
+                        
                         for i in range(120):
                             subprocess.run(command)
                             #draw.rectangle((40, 30, 160, 50), outline="black", fill="black")
                             img = original_img.copy()
                             draw = ImageDraw.Draw(img)
+                            draw.text((25, 20), f"l2ping {selected_mac}", fill="white")
                             draw.text((40, 30), f"at {i+1}", fill="white")
                             disp.display(img)
-                        
-                        
+                            
                         time.sleep(1)
-                        draw_image()
                         break
                         
             time.sleep(0.1)
