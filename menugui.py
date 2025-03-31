@@ -238,7 +238,7 @@ while True:
                 if len(mac_addresses) == 0:
                     img = original_img.copy()
                     draw = ImageDraw.Draw(img)
-                    draw.text((25, 20), "No devices found", font=font, fill="white")
+                    draw.text((15, 20), "No devices found", font=font, fill="white")
                     disp.display(img)
                     time.sleep(2)
                     break
