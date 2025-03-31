@@ -38,7 +38,9 @@ disp.begin()
 img = Image.new("RGB", (160, 128), "black")
 draw = ImageDraw.Draw(img)
 font = ImageFont.load_default()
-
+draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
+disp.display(img)
+time.sleep(0.1)
 
 files_image = ["imgmenu/fbcp.png", "imgmenu/hackfm.png", "imgmenu/l2ping.png", "imgmenu/rpi433.png", "imgmenu/sourapple.png"]
 images = [Image.open(x).convert("RGB").resize((128, 128)) for x in files_image]
@@ -63,9 +65,7 @@ def scan_bluetooth_devices():
 
     return mac_addresses
 
-draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
-disp.display(img)
-time.sleep(0.1)
+
 
 while True:
     if GPIO.input(BUTTON_UP) == GPIO.LOW:
