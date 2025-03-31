@@ -58,6 +58,8 @@ def scan_bluetooth_devices():
     mac_addresses = []  
     if len(nearby_devices) == 0:
         print("Не знайдено пристроїв.")
+        draw_image()
+
     if len(nearby_devices) > 0:
         print(f"Знайдено {len(nearby_devices)} пристроїв:")
         for addr in nearby_devices:
