@@ -248,9 +248,9 @@ while True:
                     y = 20
                     for i, addr in enumerate(mac_addresses):
                         if i == cursor:
-                            draw.text((25, y), f"> {addr}", font=font, fill="white")
+                            draw.text((10, y), f"> {addr}", font=font, fill="white")
                         else:
-                            draw.text((25, y), f"  {addr}", font=font, fill="white")
+                            draw.text((10, y), f"  {addr}", font=font, fill="white")
                         y += 20
                     disp.display(img)
                     button_state_UP = GPIO.input(BUTTON_UP)
@@ -279,7 +279,7 @@ while True:
                             #draw.rectangle((40, 30, 160, 50), outline="black", fill="black")
                             img = original_img.copy()
                             draw = ImageDraw.Draw(img)
-                            draw.text((19, 20), f"l2ping {selected_mac}", fill="white")
+                            draw.text((10, 20), f"l2ping {selected_mac}", fill="white")
                             draw.text((40, 30), f"at {i+1}", fill="white")
                             disp.display(img)
 
