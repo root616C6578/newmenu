@@ -109,9 +109,9 @@ while True:
                 y = 35 
                 for i, op in enumerate(fm_opt):
                     if i == cursor:
-                        draw.text((30, y), f"> {op}", font=font, fill="white")  # Вибраний елемент
+                        draw.text((25, y), f"> {op}", font=font, fill="white")  # Вибраний елемент
                     else:
-                        draw.text((30, y), f"  {op}", font=font, fill="white") 
+                        draw.text((25, y), f"  {op}", font=font, fill="white") 
                     y += 20
                 disp.display(img)  # Оновлення екран  
 
@@ -135,7 +135,7 @@ while True:
                             img = original_img.copy()
                             draw = ImageDraw.Draw(img)
                             # draw.rectangle((0, 0, 160, 128), outline="black", fill="black")
-                            draw.text((30, 50), f"freq: {f:.1f} MHz", font=font, fill="white")
+                            draw.text((25, 50), f"freq: {f:.1f} MHz", font=font, fill="white")
                             disp.display(img)
 
                             button_state_JUP = GPIO.input(Joystick_UP)
@@ -145,13 +145,13 @@ while True:
                             if button_state_JUP == GPIO.LOW and f < 107.9:
                                 f += 0.1
                                 f = round(f, 1)
-                                draw.text((30, 50), f"freq: {f:.1f} MHz", font=font, fill="white")
+                                draw.text((25, 50), f"freq: {f:.1f} MHz", font=font, fill="white")
                                 time.sleep(0.05)
                     
                             if button_state_JDOWN == GPIO.LOW and f > 87.5:
                                 f -= 0.1
                                 f = round(f, 1)
-                                draw.text((30, 50), f"freq: {f:.1f} MHz", font=font, fill="white")
+                                draw.text((25, 50), f"freq: {f:.1f} MHz", font=font, fill="white")
                                 time.sleep(0.05)                    
 
                             if button_state_JSELECT == GPIO.LOW:
